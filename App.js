@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-
+// 커밋테스트 한 번 더
 function Square ({value, onSquareClick}) {
     return (
         <button className="square" onClick={onSqureCick}> 
