@@ -1,6 +1,5 @@
 import {useState} from "react";
 
-// 커밋테스트 한 번 더
 function Square ({value, onSquareClick}) {
     return (
         <button className="square" onClick={onSqureCick}> 
@@ -16,53 +15,36 @@ function Board ({xIsNext, squares, onPlay}) {
         }
     }
 
-    renderSquare(i) {
-        return <Square />;
+    const winner = calculateWinner(squares);
+    let status;
+    if (winner) {
+        status = 'Winner: ' + winner;
+    } else {
+        status = '이번 턴 : ' + (xIsNext? 'X' : 'O');
     }
 
-    render() {
-        const status = '이번 턴 : X';
+    return(
+        <>
+            <div className="status">{status}</div>
+            <div className="board-row">
+                <Square value={squares[0]} onSquareClick = {() => handleClick(0)} />
+                <Square value={squares[1]} onSquareClick = {() => handleClick(0)} />
+                <Square value={squares[2]} onSquareClick = {() => handleClick(0)} />
+            </div>
+            <div className="board-row">
+                <Square value={squares[3]} onSquareClick = {() => handleClick(0)} />
+                <Square value={squares[4]} onSquareClick = {() => handleClick(0)} />
+                <Square value={squares[5]} onSquareClick = {() => handleClick(0)} />
+            </div>
+            <div className="board-row">
+                <Square value={squares[6]} onSquareClick = {() => handleClick(0)} />
+                <Square value={squares[7]} onSquareClick = {() => handleClick(0)} />
+                <Square value={squares[8]} onSquareClick = {() => handleClick(0)} />
+            </div>
+        </>
+    );
+}
+
+export default Game() {
     
-        return(
-            <div>
-                <div className="status">{status}</div>
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
-            </div>
-        );
-    }
 }
-
-class Game extends React.Component {
-    render() {
-        return (
-            <div className="game">
-                <div className="game-board">
-                    <Board />
-                </div>
-                <div className="game-info">
-                    <div>{ /* stats */ }</div>
-                    <ol>{ /* TODO */ }</ol>
-                </div>
-            </div>
-        );
-    }
-}
-
-// =========== 야미
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Game />);
