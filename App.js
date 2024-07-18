@@ -25,9 +25,10 @@ function Board ({xIsNext, squares, onPlay}) {
     const winner = calculateWinner(squares);
     let status;
     if (winner) {
-        status = 'Winner: ' + winner;
+        console.log(winner + '가 승리했습니다!');
+        status = winner + '가 승리했습니다!';
     } else {
-        status = '이번 턴 : ' + (xIsNext? 'X' : 'O');
+        status = (xIsNext? 'X' : 'O') + '가 둘 차례입니다.';
     }
 
     return(
@@ -69,12 +70,7 @@ export default function Game() {
     }
 
     const moves = history.map((squares, move) => {
-        let description;
-        if (move > 0) {
-            description = 'Go to move #' + move;
-        } else {
-            description = 'Go to game start';
-        }
+        let description = move + 1 + '턴으로 되돌리기';
         return (
             <li key={move}>
                 <button onClick={() => jumpTo(move)}>{description}</button>
@@ -88,7 +84,7 @@ export default function Game() {
                 <Board xIsNext={xIstNext} squares={currentSquares} onPlay={handlePlay}/>
             </div>
             <div className="game-info">
-                <ol>{moves}</ol>
+                <ul>{moves}</ul>
             </div>
         </div>
     );

@@ -1,5 +1,12 @@
+@font-face {
+    font-family: "NanumSquareNeo";
+    font-weight: normal;
+    src: url("./fonts/NanumSquareNeo.ttf") format("truetype");
+  }
+
 body {
-    font: 14px "D2Coding", sans-sefir;
+    font: 20px "NanumSquareNeo", sans-sefir;
+    font-weight: 300;
     margin: 20px;
 }
 
@@ -47,5 +54,9 @@ ol, ul {
 
 .game-info {
     margin-left: 20px;
+}
+
+button {
+    font: 16px "NanumSquareNeo", sans-sefir;
 }
 
